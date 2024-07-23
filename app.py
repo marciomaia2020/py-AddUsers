@@ -26,10 +26,13 @@ class User(db.Model):
     def __repr__(self):
         return f'<User {self.name}>'
 
+
 @app.route('/')
 def index():
     users = User.query.all()
     return render_template('index.html', users=users)
+
+
 
 @app.route('/add', methods=['POST'])
 def add_user():
