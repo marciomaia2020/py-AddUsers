@@ -49,16 +49,3 @@ if __name__ == '__main__':
     app.run(debug=True)
 
 
-import sys
-import os
-
-# Adicione o caminho do seu projeto ao sys.path
-path = '/home/marciomaia/index.html'
-if path not in sys.path:
-    sys.path.append(path)
-
-# Defina a variável de ambiente do Flask
-os.environ['FLASK_APP'] = 'flask_app'
-
-# Importe o seu aplicativo Flask
-from flask_app import app as application
