@@ -54,3 +54,21 @@ button:hover {
 .reset-button:hover {
     background-color: #e0a800;
 }
+.response{
+    font-size: small;
+    color: #333;
+    text-align: center;
+}
+div #delete-all{
+    background-color: #e00000;
+}
+#delete-all:hover {
+    background-color: #333;
+    color: #333;
+}
+#confirmation-modal {
+    pointer-events: none;
+}
+ul li{
+    font-size: 12px;
+}
