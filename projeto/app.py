@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 
-
 """
 Explicação do Código
 Backend
@@ -11,8 +10,6 @@ A classe User define um modelo de tabela com colunas para id, name e email.
 A rota / renderiza uma lista de usuários armazenados no banco de dados.
 A rota /add permite adicionar novos usuários ao banco de dados via formulário.
 """
-
-
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
@@ -26,13 +23,10 @@ class User(db.Model):
     def __repr__(self):
         return f'<User {self.name}>'
 
-
 @app.route('/')
 def index():
     users = User.query.all()
     return render_template('index.html', users=users)
-
-
 
 @app.route('/add', methods=['POST'])
 def add_user():
@@ -43,15 +37,7 @@ def add_user():
     db.session.commit()
     return redirect(url_for('index'))
 
-"""
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
-    app.run(debug=True)
-"""
-
-
-
-if __name__ == '__main__':
-    #app.run(debug=False,host='0.0.0.0')
     app.run(host='0.0.0.0', port=5000)

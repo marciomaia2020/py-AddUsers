@@ -1,7 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
     const emailInput = document.getElementById('email');
 
-    emailInput.addEventListener('input', function() {
+    // Função para ajustar a largura do campo de entrada com base no texto
+    function adjustInputWidth() {
         // Cria um elemento span para medir a largura do texto
         const span = document.createElement('span');
         span.style.visibility = 'hidden';
@@ -17,5 +18,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Remove o span após o cálculo
         document.body.removeChild(span);
+    }
+
+    // Ajusta a largura do campo de entrada quando o usuário digita
+    emailInput.addEventListener('input', adjustInputWidth);
+
+    // Ajusta a largura do campo de entrada quando o formulário é resetado
+    document.querySelector('form').addEventListener('reset', function() {
+        // Espera um pequeno intervalo para garantir que o campo de entrada seja limpo
+        setTimeout(adjustInputWidth, 0);
     });
+
+    // Ajusta a largura do campo de entrada quando a página é carregada
+    adjustInputWidth();
 });

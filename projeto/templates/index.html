@@ -6,23 +6,27 @@
 </head>
 <body>
 
-<!--
-Frontend
-O template index.html inclui um formulário para adicionar novos usuários e uma lista para exibir os usuários existentes.
--->
+    <!--
+    Frontend
+    O template index.html inclui um formulário para adicionar novos usuários e uma lista para exibir os usuários existentes.
+    -->
+    
+        <div class="form-container">
+            <h1>Adicionar usuários</h1>
+            <form action="/add" method="post">
+                <input type="text" name="name" placeholder="Nome completo" required>
+                <input type="email" name="email" placeholder="Email" id="email" required>
+                <button type="submit">Adicionar</button>
+                <button type="reset" class="reset-button">Resetar</button>
+            </form>
+            <ul>
+                {% for user in users %}
+                    <li>{{ user.name }} - {{ user.email }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    
+        <script src="{{ url_for('static', filename='scripts.js') }}"></script>
 
-    <h1>Adicionar usuários</h1>
-    <form action="/add" method="post">
-        <input type="text" name="name" placeholder="Nome completo" required>
-        <input type="email" name="email" placeholder="Email" id="email" required>
-        <button type="submit">Adicionar</button>
-    </form>
-    <ul>
-        {% for user in users %}
-            <li>{{ user.name }} - {{ user.email }}</li>
-        {% endfor %}
-    </ul>
-
-    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
 </body>
 </html>
